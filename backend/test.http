@@ -1,0 +1,13 @@
+POST http://localhost:4000/app/applicants
+Content-Type: application/json
+
+{
+        "FirstName":"vjndsk",
+        "LastName":"vnskj",
+        "Email":"vdsjvn",
+        "PhoneNumber":"02",
+        "Province":"province",
+        "City":"city",
+        "Gender":"gender",
+        "Service":"service"
+}

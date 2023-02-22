@@ -1,0 +1,40 @@
+nav{
+    background-color: rgb(51, 47, 47);
+    
+}
+
+ul{
+    margin-bottom: 0;
+}
+
+.left-nav-div{
+    width: fit-content;
+    display: inline-block;
+}
+
+.left-nav-div ul li img{
+    border-radius: 30px;
+}
+
+.left-nav-div ul li{
+    display: inline-block;
+    margin: 0.5em;
+    color: white;
+}
+
+.right-nav-div{
+    width: fit-content;
+    float: right;
+    display: inline;
+}
+
+.right-nav-div ul li{
+    text-decoration: none;
+    margin: 1.1em;
+    margin-right: 4em;
+    list-style: none;
+}
+
+li a{
+    color: white;
+}

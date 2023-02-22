@@ -1,0 +1,42 @@
+.sliderimages{
+    width:60%;
+    height:400px;
+    position: relative;
+    left:200px;
+}
+
+.card{
+    text-align: center;
+    align-items: center;
+    border: none;
+}
+
+.card img{
+    height:80px;
+    max-width: 25%;
+    border-radius: 10px;
+}
+.prevbtn{
+    background-color: black;
+    height: 70%;
+}
+
+.afterslider{
+    text-align: center;
+    position: relative;
+    bottom: 80px;
+}
+
+.afterslider button{
+    border: none;
+    font-size: 15px;
+    background-color: rgb(59, 218, 223);
+    border-radius: 12px;
+    padding: 10px 10px 10px 10px;
+    color: white;
+}
+
+.afterslider button:hover{
+    background-color:rgb(72, 165, 168);
+}
+
