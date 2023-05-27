@@ -1,14 +1,13 @@
 .main-div-exp{
     display: flex;
-    justify-content: space-around;
-    width:100%;
-    text-align: center;
+    justify-content:space-around;
+    flex-wrap: wrap;
 }
 
 .main-div-exp-docs{
-    width:100%;
     text-align: center;
     align-items: center;
+    flex-basis: 50%;
 }
 
 .main-div-exp img{

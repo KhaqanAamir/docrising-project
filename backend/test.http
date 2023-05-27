@@ -1,13 +1,12 @@
-POST http://localhost:4000/app/applicants
+POST http://localhost:4000/app/signup
 Content-Type: application/json
 
 {
-        "FirstName":"vjndsk",
-        "LastName":"vnskj",
-        "Email":"vdsjvn",
-        "PhoneNumber":"02",
-        "Province":"province",
-        "City":"city",
-        "Gender":"gender",
-        "Service":"service"
+        "FullName":"Khaqan Aamir",
+        "Email":"khaqanaamir92@gmail.com",
+        "PhoneNumber":"03305859181!",
+        "City":"Rawalpindi",
+        "Address":"Usman Block, Bahriatown",
+        "Password":"khaqan123",
+        "Gender":"Male"
 }

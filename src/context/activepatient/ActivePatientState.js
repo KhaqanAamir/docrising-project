@@ -4,13 +4,7 @@ import ActivePatientContext from './ActivePatientContext'
 const ActivePatientState=(props)=>{
 
 
-    // const [activepatient,setactivepatient]=useState('Khuni');
-
-    // const changeactivepatient=(name)=>{
-    //     setactivepatient(name);
-    // }
-
-    const [patient, setpatient]=useState(null)
+    const [patient, setpatient]=useState({})
 
     const activepatient=(name)=>{
         setpatient(name)

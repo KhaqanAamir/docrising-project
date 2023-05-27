@@ -1,0 +1,26 @@
+.modal-wrapper{
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom: 0;
+    background-color:rgba(189, 189, 189, 0.9);
+}
+
+.modal-container{
+    height:40rem;
+    min-width: 60rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 30rem;
+    background-color: white;
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    overflow: auto;
+}
+
+.doctorname{
+    color: rgb(62, 182, 182);
+}

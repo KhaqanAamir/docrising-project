@@ -1,0 +1,11 @@
+.maincard{
+    width: 200px;
+    border: 1px solid black;
+    margin: 0.05em;
+}
+
+.cardtext{
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

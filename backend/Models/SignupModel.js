@@ -1,5 +1,7 @@
 const mongoose=require('mongoose')
 
+mongoose.set('strictQuery', false);
+
 const SignUpTemplate=new mongoose.Schema({
     FullName:{
         type:String,
@@ -8,8 +10,17 @@ const SignUpTemplate=new mongoose.Schema({
     Email:{
         type:String,
         required:true
+        // unique:true
+    },
+    PhoneNumber:{
+        type:String,
+        required:true
     },
     City:{
+        type:String,
+        required:true
+    },
+    Address:{
         type:String,
         required:true
     },
@@ -23,4 +34,6 @@ const SignUpTemplate=new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('patienttable', SignUpTemplate);
+const User= mongoose.model('patienttable', SignUpTemplate);
+// User.createIndexes();
+module.exports = User;

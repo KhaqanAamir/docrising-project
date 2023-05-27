@@ -14,13 +14,14 @@ const ExperiencedDocs = () => {
         <h5>Sonia Mookherjea</h5>
         <span>Physician Assistant</span>
       </div>
-      <div>
+      <div className='main-div-exp-docs'>
         <img src={crush2} alt="doc1" />
         <h5>Kashif Afraz</h5>
         <span>MBBS Muna Bhai</span>
       </div>
     </div>
-    <center><button><Link to='/patientprofile/patient-applicationform' style={{color:'white'}}>Book an Appointment</Link></button></center><br /><br /><br />
+    <center><button><Link to='/patientprofile/patient-applicationform' style={{color:'white'}}>Book an Appointment</Link></button></center>
+    <br /><br /><br />
     </>
   )
 }

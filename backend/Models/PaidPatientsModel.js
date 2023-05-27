@@ -1,23 +1,18 @@
 const mongoose=require('mongoose')
 
-const AppliedPatients=new mongoose.Schema({
-    FirstName:{
-        type:String,
-        required:true
-    },
-    LastName:{
+mongoose.set('strictQuery', false);
+
+const PaidPts=new mongoose.Schema({
+    FullName:{
         type:String,
         required:true
     },
     Email:{
         type:String,
         required:true
+        // unique:true
     },
-    PhoneNumber:{
-        type:Number,
-        required:true
-    },
-    Province:{
+    Address:{
         type:String,
         required:true
     },
@@ -25,38 +20,39 @@ const AppliedPatients=new mongoose.Schema({
         type:String,
         required:true
     },
-    Gender:{
+    Password:{
         type:String,
         required:true
     },
-    Service:{
+    State:{
         type:String,
         required:true
     },
-    Age:{
+    Zipcode:{
+        type:Number,
+        required:true
+    },
+    NameOnCard:{
         type:String,
         required:true
     },
-    Allergy:{
+    CreditCardNumber:{
         type:String,
         required:true
     },
-    Weight:{
+    ExpMonth:{
         type:String,
         required:true
     },
-    Pharmacy:{
+    ExpYear:{
         type:String,
         required:true
     },
-    CurrentDoctor:{
+    CVV:{
         type:String,
         required:true
-    },
-    Date:{
-        type:String,
-        required: true
     }
 })
 
-module.exports=mongoose.model('applicantstable', AppliedPatients)
+const User= mongoose.model('PaidPatients', PaidPts);
+module.exports = User;
