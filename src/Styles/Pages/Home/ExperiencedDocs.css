@@ -1,24 +1,3 @@
-.main-div-exp{
-    display: flex;
-    justify-content:space-around;
-    flex-wrap: wrap;
-}
-
-.main-div-exp-docs{
-    text-align: center;
-    align-items: center;
-    flex-basis: 50%;
-}
-
-.main-div-exp img{
-    max-width:22%;
-    max-height:30%;
-    margin-left: 1em;
-    margin-bottom: 5px;
-    border: 1px solid black;
-    border-radius: 50%;
-}
-
 button{
     color:white;
 border: none;
@@ -30,5 +9,10 @@ padding: 7px 10px 10px 10px;
 
 button:hover{
     background-color:rgb(72, 165, 168) ;
+}
 
+.showdoctor-main-div{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }

@@ -96,8 +96,10 @@ const SignUp = () => {
 
       const patient = await patientdetails.json();
       localStorage.setItem("token", json.authToken);
+      localStorage.setItem("loggedin", true)
+      localStorage.setItem("activepatientdetails",JSON.stringify(patient))
+      a.activepatient(JSON.parse(localStorage.getItem("activepatientdetails")));
       history("/patient/Home");
-      a.activepatient(patient);
       console.log(patient);
     } else {
       errormessage = json.error;

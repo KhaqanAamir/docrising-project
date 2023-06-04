@@ -24,7 +24,12 @@ router.post(
       const note = new prescriptions({
         user: req.user.id,
         DoctorName:req.body.DoctorName,
-        DoctorNotes:req.body.DoctorNotes
+        DoctorNotes:req.body.DoctorNotes,
+        ServiceType:req.body.ServiceType,
+        Medication1:req.body.Medication1,
+        Purpose1:req.body.Purpose1,
+        Medication2:req.body.Medication2,
+        Purpose2:req.body.Purpose2
       });
       // console.log(populate({}))
       const savednote = await note.save();
@@ -96,9 +101,15 @@ router.delete(
 )
 
 
-router.get("/fetchallprescriptions", fetchuser, async (req, res) => {
-  const notes = await prescriptions.find({ user: req.user.id });
+router.post("/fetchallprescriptionsbyname", async (req, res) => {
+  const notes = await prescriptions.find({ FirstName: req.body.FirstName });
   res.json(notes);
 });
+
+
+router.route('/getallprescriptions').get((req,res)=>{
+  prescriptions.find()
+  .then(patients=>res.json(patients))
+})
 
 module.exports = router;

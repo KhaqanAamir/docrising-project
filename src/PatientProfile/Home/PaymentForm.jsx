@@ -1,7 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import cards from '../../utils/cards.jpg'
 import '../../Styles/Pages/Home/PaymentForms.css'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import NavBar2 from '../../Components/NavBar2'
+import SignUpAlert from './SignUpAlert'
 
 const PaymentForm = () => {
     
@@ -16,16 +19,57 @@ const PaymentForm = () => {
     // const[expmonth,setexpmonth]=useState()
     // const[expyear,setexpyear]=useState()
     // const[cvv,setcvv]=useState()
+    const [alert, setalert] = useState(false);
+    const [alertstate,setalertstate]=useState(false)
+    const erroemessage="Your payment has been successfull"
 
-    // const history=useNavigate();
+    const history=useNavigate();
+
+    const showalert = (type, message) => {
+        setalert({
+          type: type,
+          message: message,
+        });
+        setTimeout(() => {
+          setalert(null);
+        }, 2000);
+      };
 
     const showcalendar=(e)=>{
         e.preventDefault();
+
+        axios.post(`http://localhost:4000/user/paidpatient/${localStorage.getItem('formid')}`,{
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
+
+        setalertstate(true)
+        showalert("success", erroemessage);
+        
     }
 
+    useEffect(() => {
+        let timeout;
+    
+        if (alertstate) {
+          timeout = setTimeout(() => {
+            history('/patient/Home');
+          }, 3000);
+        }
+    
+        return () => {
+          clearTimeout(timeout);
+        };
+      }, [alertstate, history]);
 
+    
+
+    
   return (
     <>
+    <NavBar2/>
+    {alert && <SignUpAlert alert={alert} />}
     <div className="paymentform-container">
         <form action="">
             <div className="paymentform-row">

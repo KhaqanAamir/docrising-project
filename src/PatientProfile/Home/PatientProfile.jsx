@@ -14,10 +14,10 @@ import axios from 'axios';
 
 import ActivePatientContext from "../../context/activepatient/ActivePatientContext";
 import Prescription from "./Prescription";
-import IncludePrescription from "./IncludePrescription";
 import PrescriptionsState from "../../context/prescriptions/PrescriptionsState";
 import Spinner from "react-bootstrap/Spinner"
 import NavBar2 from "../../Components/NavBar2";
+import Footer from "../../Components/Footer";
 
 
 const PatientProfile = () => {
@@ -90,8 +90,8 @@ const PatientProfile = () => {
                  
                   </MDBCardBody>
                 </MDBCard>
-
-                <MDBCard className="mb-4 mb-lg-0">
+                {allapplications.length>0 && (
+                  <MDBCard className="mb-4 mb-lg-0">
                   <MDBCardBody className="p-0">
                     <MDBListGroup flush className="rounded-3">
                       <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
@@ -131,6 +131,7 @@ const PatientProfile = () => {
                     </MDBListGroup>
                   </MDBCardBody>
                 </MDBCard>
+                )}
               </MDBCol>
               <MDBCol lg="8">
                 <MDBCard className="mb-4">
@@ -227,7 +228,7 @@ const PatientProfile = () => {
             </MDBRow>
           </MDBContainer>
         </section>
-        <IncludePrescription />
+        <Footer/>
       </PrescriptionsState>
     </>
   );

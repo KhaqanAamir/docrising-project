@@ -4,6 +4,7 @@ import icon from '../utils/Local Images/DocRisingIcon.jpeg'
 import { Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 import {motion} from 'framer-motion';
+import About from '../PatientProfile/Home/About';
 
 
 const NavBar2 = () => {
@@ -36,14 +37,10 @@ const NavBar2 = () => {
               <div className="dropdown-content">
                 <Link to="/Service/ADHD">ADD/ADHD Treatment</Link>
                 <Link to="/Service/Anxiety">Anxiety Treatment</Link>
-                <Link to="/">Depression Treatment</Link>
-                <Link to="/">Insomnia Treatment</Link>
-                <Link to="/">ESA Letter</Link>
               </div>
               </div>
               </motion.li>
-                <motion.li whileHover={{scale:1.5, margin:'0px 40px'}}><Link className='linkss' to='/patient/Home'>Contact Us</Link></motion.li>
-                <motion.li whileHover={{scale:1.5, margin:'0px 40px'}}><Link className='linkss' to='/patient/Home'>About Us</Link></motion.li>
+                <motion.li whileHover={{scale:1.5, margin:'0px 40px'}}><Link className='linkss' to='/About'>About Us</Link></motion.li>
                 <motion.li whileHover={{scale:1.5, margin:'0px 40px'}}><Link className='linkss' to='/patient/SelfMedication'>Self Medication</Link></motion.li>
             </ul>
         </div>

@@ -57,6 +57,18 @@ const AppliedPatients=new mongoose.Schema({
         type:String,
         required:true
     },
+    SelectedProvider:{
+        type:String,
+        required:true
+    },
+    Status:{
+        type:String,
+        default:'paymentpending'
+    },
+    doc_id:{
+        type:String,
+        required:true
+    },
     Date:{
         type:String,
         required: true

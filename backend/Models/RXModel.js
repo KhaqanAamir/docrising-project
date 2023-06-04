@@ -14,7 +14,28 @@ const prescriptionmodel=new mongoose.Schema({
     DoctorNotes:{
         type:String,
         required:true
+    },
+    ServiceType:{
+        type:String,
+        required:true
+    },
+    Medication1:{
+        type:String,
+        required:true
         // unique:true
+    },
+    Purpose1:{
+        type:String,
+        required:true
+    },
+    Medication2:{
+        type:String,
+        required:true
+        // unique:true
+    },
+    Purpose2:{
+        type:String,
+        required:true
     },
     date:{
         type:Date,

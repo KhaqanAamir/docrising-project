@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import '../../Styles/Pages/Home/ExperiencedDocs.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
-import Spinner from "react-bootstrap/Spinner"
 import doctoravatar from '../../utils/Local Images/doctoravatar.jpg'
 import {
   MDBCard,
@@ -13,7 +12,7 @@ import {
   MDBBtn
 } from 'mdb-react-ui-kit';
 
-const ExperiencedDocs = () => {
+const ExperiencedDocs = ({setgetproviders}) => {
 
   const [getdoctors,setgetdoctors]=useState([]);
 
@@ -31,46 +30,41 @@ const ExperiencedDocs = () => {
 
     fetchdoctors()
 
-    // console.log(getdoctors)
   },[])
 
   console.log(getdoctors)
+  setgetproviders(getdoctors);
+  
+  localStorage.setItem('alldoctors',getdoctors)
 
 
-  if (!getdoctors) {
-    return (
-      <div  style={{position:'fixed',left:'45%', top:'30%'}}>
-          <div>
-            <h1 className="formTitleLink">DocRising</h1>
-          </div>
-          <div>
-            <center>
-            <Spinner animation="border" variant="primary" />
-            </center>
-          </div>
-      </div>
-    );
-  }
-
-  else{
+  
 
   return (
     <>
-    <MDBCard>
-      <MDBCardImage src={doctoravatar} position='top' alt='...' />
+    <div className='showdoctor-main-div'>
+    {getdoctors.map((items)=>{
+      return(
+        <>
+        <MDBCard>
+      <MDBCardImage src={doctoravatar} position='top' alt='...' style={{height:'200px'}}/>
       <MDBCardBody>
-        <MDBCardTitle>Card title</MDBCardTitle>
+        <MDBCardTitle>Dr. {items.name} ({items.qualification})</MDBCardTitle>
         <MDBCardText>
-          Some quick example text to build on the card title and make up the bulk of the card's content.
+          {items.specialization}
         </MDBCardText>
-        <MDBBtn href='#'>Button</MDBBtn>
+        <MDBBtn><Link to='/patientprofile/patient-applicationform' style={{color:'white'}}>Book an appointment with doctor</Link></MDBBtn>
       </MDBCardBody>
     </MDBCard>
+        </>
+      )
+    })}
+    </div>
+    <br /><br /><br />
     <center><button><Link to='/patientprofile/patient-applicationform' style={{color:'white'}}>Book an Appointment</Link></button></center>
     <br /><br /><br />
     </>
   )
-}
 }
 
 export default ExperiencedDocs

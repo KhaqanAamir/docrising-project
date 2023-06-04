@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import NavBar2 from '../../Components/NavBar2'
 import '../../Styles/Pages/Home/ADHD.css'
 import ADHDs from '../../utils/Local Images/ADHD.jpg'
+import Footer from '../../Components/Footer'
 
 const ADHD = () => {
     const newsItems = [
@@ -121,6 +122,7 @@ const ADHD = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   )
 }

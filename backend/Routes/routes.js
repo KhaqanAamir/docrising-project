@@ -2,6 +2,7 @@ const express=require('express');
 const router= express.Router();
 const SignUpTemplate=require('../Models/SignupModel')
 const AppliedPatients=require('../Models/Applicants')
+const PaidPatients=require('../Models/PaidPatientsModel')
 const accountSID='AC9b2cb1a025d47046f937947627377aa9';
 const authToken='72b7e37fe3439521eaf0c15888ab76f8';
 const client=require('twilio')(accountSID,authToken);
@@ -102,7 +103,7 @@ router.post('/signin',[body('Email').isEmail()],  async (request, response)=>{
 
 //this route is used when patient filled application form for appointment on the website
 
-router.post('/applicants',fetchuser,[body('FirstName').isLength({min: 3}),body('LastName').isLength({ min: 3 }),body('Email').isEmail(),body('PhoneNumber').isNumeric(),body('Province').isLength({ min: 3 }),body('City').isLength({ min: 3 }),body('Gender').isLength({ min: 3 }),body('Service').isLength({ min: 3 })], async (request, response)=>{
+router.post('/applicants',fetchuser,[body('FirstName').isLength({min: 3}),body('LastName').isLength({ min: 3 }),body('PhoneNumber').isNumeric(),body('Province').isLength({ min: 3 }),body('City').isLength({ min: 3 }),body('Gender').isLength({ min: 3 }),body('Service').isLength({ min: 3 })], async (request, response)=>{
     
     let success=false;
      const errors = validationResult(request);
@@ -124,6 +125,8 @@ router.post('/applicants',fetchuser,[body('FirstName').isLength({min: 3}),body('
         Weight:request.body.Weight,
         Pharmacy:request.body.Pharmacy,
         CurrentDoctor:request.body.CurrentDoctor,
+        SelectedProvider:request.body.SelectedProvider,
+        doc_id:request.body.doc_id,
         Gender:request.body.Gender,
         Service:request.body.Service,
         Date:request.body.Date
@@ -192,6 +195,16 @@ router.get("/delete", (req,res)=>{
     })
 })
 
+router.get("/deleteapplicants", (req,res)=>{
+    AppliedPatients.deleteMany({},(err,data)=>{
+        if(err){
+            return(res.status(500).send(err))
+        }else{
+            return res.status(200).send(data)
+        }
+    })
+})
+
 
 //getting all applications
 
@@ -199,6 +212,32 @@ router.get("/fetchallapplications", fetchuser, async (req, res) => {
     const notes = await AppliedPatients.find({ user: req.user.id });
     res.json(notes);
   });
+
+
+  router.post('/createpaidpatient',(req,res)=>{
+    const CreatePaidPatient=new PaidPatients({
+        applicants_id:req.body.id
+    })
+    CreatePaidPatient.save()
+    .then(data=>{
+        res.json({data})
+    })
+})
+
+
+router.post('/paidpatient/:id', async (req,res)=>{
+    let success=false
+    const Application= await AppliedPatients.findByIdAndUpdate(req.params.id,{Status:'Pending'}, {new:true})
+    if(!Application){
+        return res.status(404).send("Application not found")
+    }
+    
+    else{
+        success=true;
+        // Application.Status='Approved';
+        res.status(200).json({success:success})
+    }
+})
   
 
 module.exports= router; 
