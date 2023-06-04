@@ -1,11 +1,15 @@
 import React from "react";
-import { useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+// import axios from "axios";
 import NavBar2 from "../../Components/NavBar2";
 import { useNavigate } from "react-router-dom";
 import Calendar from "./Calendar";
+// import ApplicationContext from "../../context/Apllication/ApplicationContext";
 
 const Forms = ({setapplieddate, applieddate}) => {
+
+  // const a=useContext(ApplicationContext);
+
   let history = useNavigate();
   const [firstname, setfirstname] = useState("");
   const [lastname, setlastname] = useState("");
@@ -58,6 +62,10 @@ const Forms = ({setapplieddate, applieddate}) => {
     setcity(event.target.value);
   };
 
+  useEffect(()=>{
+
+  },[])
+
   const changegender = (event) => {
     setgender(event.target.value);
   };
@@ -66,38 +74,72 @@ const Forms = ({setapplieddate, applieddate}) => {
     setservice(event.target.value);
     console.log(service);
   };
+  let json = "";
 
-  const onSubmit = (event) => {
+  const onSubmit =async (event) => {
     event.preventDefault();
 
-    const registered = {
-      FirstName: firstname,
-      LastName: lastname,
-      Email: email,
-      PhoneNumber: phonenumber,
-      Province: province,
-      City: city,
-      Age:age,
-      Allergy:allergy,
-      Weight:weight,
-      Pharmacy:pharmacy,
-      CurrentDoctor:currentdoctor,
-      Gender: gender,
-      Service: service,
-      Date:applieddate
-    };
+    // const registered = {
+    //   FirstName: firstname,
+    //   LastName: lastname,
+    //   Email: email,
+    //   PhoneNumber: phonenumber,
+    //   Province: province,
+    //   City: city,
+    //   Age:age,
+    //   Allergy:allergy,
+    //   Weight:weight,
+    //   Pharmacy:pharmacy,
+    //   CurrentDoctor:currentdoctor,
+    //   Gender: gender,
+    //   Service: service,
+    //   Date:applieddate
+    // };
 
-    axios.post("http://localhost:4000/user/applicants", registered)
-      .then((response) => {
-        alert(registered.Date)
-        console.log(response)
-        if(response.data.success===true){
-          history('/patientprofile/payment-method')
-        }
-      });
+  //   axios.post("http://localhost:4000/user/applicants",{headers: {
+  //     // Overwrite Axios's automatically set Content-Type
+  //     'Content-Type': 'application/json',
+  //     'auth-token': localStorage.getItem('token')
+  //     }}, registered)
+  //     .then((response) => {
+  //       alert(registered.Date)
+  //       console.log(response)
+  //       if(response.data.success===true){
+  //         history('/patientprofile/payment-method')
+  //       }
+  //     });
 
+ 
+
+  const response = await fetch("http://localhost:4000/user/applicants", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify({ 
+        FirstName: firstname,
+        LastName: lastname,
+        Email: email,
+        PhoneNumber: phonenumber,
+        Province: province,
+        City: city,
+        Age:age,
+        Allergy:allergy,
+        Weight:weight,
+        Pharmacy:pharmacy,
+        CurrentDoctor:currentdoctor,
+        Gender: gender,
+        Service: service,
+        Date:applieddate }),
+    });
+    json = await response.json();
+    if(json.success){
+      history('/patientprofile/payment-method')
+    }
   };
-
+  
+  
     return (
       <>
         <NavBar2 />

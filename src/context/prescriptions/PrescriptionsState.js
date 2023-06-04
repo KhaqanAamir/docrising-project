@@ -33,10 +33,14 @@ const getprescriptions=async()=>{
       const allprescriptions= await called.json()
        setnotes(allprescriptions)
 }
+
+const deleteprescription=async(id)=>{
+  console.log(id)
+}
     
     return(
 
-        <PrescriptionsContext.Provider value={{notes,addprescription, getprescriptions}}>
+        <PrescriptionsContext.Provider value={{notes,addprescription, getprescriptions, deleteprescription}}>
             {props.children}
         </PrescriptionsContext.Provider>
     

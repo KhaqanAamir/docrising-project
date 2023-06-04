@@ -34,8 +34,8 @@ const NavBar2 = () => {
                 <motion.li whileHover={{scale:1.5, margin:'0px 40px'}}><div className="dropdown">
               <Link className='dropbtn' to='/patient/Home'>Services</Link>
               <div className="dropdown-content">
-                <Link to="/">ADD/ADHD Treatment</Link>
-                <Link to="/">Anxiety Treatment</Link>
+                <Link to="/Service/ADHD">ADD/ADHD Treatment</Link>
+                <Link to="/Service/Anxiety">Anxiety Treatment</Link>
                 <Link to="/">Depression Treatment</Link>
                 <Link to="/">Insomnia Treatment</Link>
                 <Link to="/">ESA Letter</Link>

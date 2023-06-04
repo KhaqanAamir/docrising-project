@@ -1,0 +1,86 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.anxiety-main-div h1 {
+  font-size: 32px;
+  color: #333;
+  animation: fadeIn 1s ease-in-out;
+  background-color: #bebbbb;
+  padding: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.anxiety-main-div h1:hover {
+  background-color: #eaeaea;
+}
+
+.my-section {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.section-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.section-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+
+.section-image {
+  width: 20%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+.section-image:hover {
+  transform: scale(1.05);
+}
+
+
+
+.two-sections {
+  display: flex;
+}
+
+.section {
+  flex: 1;
+  padding: 20px;
+  background-color: #f2f2f2;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.section:last-child {
+  margin-right: 0;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+.section img {
+  width: 25%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+}

@@ -1,0 +1,133 @@
+.adhd-page {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .image-sidebar {
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  .image-sidebar img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .quote {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  
+  .quote p {
+    font-style: italic;
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .quote .author {
+    text-align: right;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  .news-feed {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  
+  .news-feed h2 {
+    margin-bottom: 10px;
+  }
+  
+  .slideshow {
+    margin-top: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f8f8f8;
+    padding: 20px;
+  }
+  
+  .slideshow h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .slideshow p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .slideshow a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .slideshow a:hover {
+    text-decoration: underline;
+  }
+  
+  .slideshow-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .slideshow-controls button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .slideshow-controls button:hover {
+    background-color: #0056b3;
+  }
+  
+  .slideshow-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .slideshow-indicators button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .slideshow-indicators button.active {
+    background-color: #007bff;
+  }
+
+  .resources li a{
+    color:red;
+  }
+
+  .sidebar li a{
+    color: red;
+  }

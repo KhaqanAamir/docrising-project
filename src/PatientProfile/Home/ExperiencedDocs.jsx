@@ -1,29 +1,76 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import '../../Styles/Pages/Home/ExperiencedDocs.css'
-import crush1 from '../../utils/Local Images/crush1.png'
-import crush2 from '../../utils/Local Images/crush2.png'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+import Spinner from "react-bootstrap/Spinner"
+import doctoravatar from '../../utils/Local Images/doctoravatar.jpg'
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardImage,
+  MDBBtn
+} from 'mdb-react-ui-kit';
 
 const ExperiencedDocs = () => {
+
+  const [getdoctors,setgetdoctors]=useState([]);
+
+  useEffect(()=>{
+
+    const fetchdoctors=async ()=>{
+    try{
+      const response=await axios.get('http://localhost:4000/doctors/getdoctors');
+      setgetdoctors(response.data);
+    }
+   catch(error){
+    console.error('Error fetching anxiety treatment data:', error)
+  }
+};
+
+    fetchdoctors()
+
+    // console.log(getdoctors)
+  },[])
+
+  console.log(getdoctors)
+
+
+  if (!getdoctors) {
+    return (
+      <div  style={{position:'fixed',left:'45%', top:'30%'}}>
+          <div>
+            <h1 className="formTitleLink">DocRising</h1>
+          </div>
+          <div>
+            <center>
+            <Spinner animation="border" variant="primary" />
+            </center>
+          </div>
+      </div>
+    );
+  }
+
+  else{
+
   return (
     <>
-    <h5 style={{textAlign:'center'}}>Team of Experienced Professionals</h5><br />
-    <div className='main-div-exp'>
-      <div className='main-div-exp-docs'>
-        <img src={crush1} alt="doc1" />
-        <h5>Sonia Mookherjea</h5>
-        <span>Physician Assistant</span>
-      </div>
-      <div className='main-div-exp-docs'>
-        <img src={crush2} alt="doc1" />
-        <h5>Kashif Afraz</h5>
-        <span>MBBS Muna Bhai</span>
-      </div>
-    </div>
+    <MDBCard>
+      <MDBCardImage src={doctoravatar} position='top' alt='...' />
+      <MDBCardBody>
+        <MDBCardTitle>Card title</MDBCardTitle>
+        <MDBCardText>
+          Some quick example text to build on the card title and make up the bulk of the card's content.
+        </MDBCardText>
+        <MDBBtn href='#'>Button</MDBBtn>
+      </MDBCardBody>
+    </MDBCard>
     <center><button><Link to='/patientprofile/patient-applicationform' style={{color:'white'}}>Book an Appointment</Link></button></center>
     <br /><br /><br />
     </>
   )
+}
 }
 
 export default ExperiencedDocs

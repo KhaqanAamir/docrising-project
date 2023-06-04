@@ -102,16 +102,17 @@ router.post('/signin',[body('Email').isEmail()],  async (request, response)=>{
 
 //this route is used when patient filled application form for appointment on the website
 
-router.post('/applicants',[body('FirstName').isLength({min: 3}),body('LastName').isLength({ min: 3 }),body('Email').isEmail(),body('PhoneNumber').isNumeric(),body('Province').isLength({ min: 3 }),body('City').isLength({ min: 3 }),body('Gender').isLength({ min: 3 }),body('Service').isLength({ min: 3 })], (request, response)=>{
+router.post('/applicants',fetchuser,[body('FirstName').isLength({min: 3}),body('LastName').isLength({ min: 3 }),body('Email').isEmail(),body('PhoneNumber').isNumeric(),body('Province').isLength({ min: 3 }),body('City').isLength({ min: 3 }),body('Gender').isLength({ min: 3 }),body('Service').isLength({ min: 3 })], async (request, response)=>{
     
     let success=false;
      const errors = validationResult(request);
      if (!errors.isEmpty()) {
        return (
-        response.status(400).json({success:success, errors: "Please fill all the fields" }));
+        response.json({success:success, errors: "Please fill all the fields" }));
      }
      try{
     const Applicants= new AppliedPatients({
+        user:request.user.id,
         FirstName: request.body.FirstName,
         LastName:request.body.LastName,
         Email:request.body.Email,
@@ -190,5 +191,14 @@ router.get("/delete", (req,res)=>{
         }
     })
 })
+
+
+//getting all applications
+
+router.get("/fetchallapplications", fetchuser, async (req, res) => {
+    const notes = await AppliedPatients.find({ user: req.user.id });
+    res.json(notes);
+  });
+  
 
 module.exports= router; 

@@ -12,7 +12,7 @@ const Welcome = () => {
     
       activepatient(JSON.parse(localStorage.getItem("activepatientdetails")));
 
-      console.log(patient)
+      // console.log(patient)
   },[])
 
   return (

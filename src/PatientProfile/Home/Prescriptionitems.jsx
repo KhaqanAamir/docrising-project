@@ -5,10 +5,14 @@ import ShowFullPrescription from './ShowFullPrescription';
 const Prescriptionitems = (props) => {
 
   const [showModal,setshowModal]=useState(false)
-    const {users}=props;
+    const {users, deleteprescription}=props;
 
     const togglemodal=()=>{
       setshowModal(!showModal)
+    }
+
+    const deleted=()=>{
+      deleteprescription(users._id)
     }
 
   return (
@@ -21,7 +25,8 @@ const Prescriptionitems = (props) => {
               {users.DoctorNotes}
             </p>
             <i class="fa-solid fa-trash-can fa-xl"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="fa-solid fa-eye fa-xl" onClick={togglemodal}></i>
+            <i class="fa-solid fa-eye fa-xl" onClick={togglemodal}></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-solid fa-trash-can fa-xl" onClick={deleted}></i>
           </div>
         </div>
       {showModal && <ShowFullPrescription users={users} togglemodal={togglemodal}/>}

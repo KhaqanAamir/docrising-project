@@ -26,6 +26,7 @@ router.post(
         DoctorName:req.body.DoctorName,
         DoctorNotes:req.body.DoctorNotes
       });
+      // console.log(populate({}))
       const savednote = await note.save();
       res.json(savednote);
     } catch (error) {
@@ -58,7 +59,7 @@ router.put(
       return res.status(401).send("Not allowed")
     }
 
-    note=await prescriptions.findByIdAndUpdate(req.params.id, {$set:newnote}, {new:true})
+    note=await prescriptions.findByIdAndUpdate(req.params.id, {$set:newnote}, {new:true}).populate('user')
     res.json({note})
   }
   catch(error){

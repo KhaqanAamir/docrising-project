@@ -10,6 +10,8 @@ import SignIn from './PatientProfile/Home/SignIn';
 import PatientProfile from './PatientProfile/Home/PatientProfile';
 import PaymentForm from './PatientProfile/Home/PaymentForm';
 import SelfMedication from './PatientProfile/Home/SelfMedication';
+import ADHD from './PatientProfile/Services/ADHD';
+import Anxiety from './PatientProfile/Services/Anxiety';
 
 
 
@@ -36,6 +38,8 @@ function App() {
             <Route path='/patient/SignIn' element={<SignIn/>}></Route>
             <Route path='/patient/Home' element={<Home/>}></Route>
             <Route path='/patient/SelfMedication' element={<SelfMedication/>}></Route>
+            <Route path='/Service/ADHD' element={<ADHD/>}></Route>
+            <Route path='/Service/Anxiety' element={<Anxiety/>}></Route>
             <Route path='/patient/profile' element={<PatientProfile/>}></Route>
             <Route path='/patientprofile/patient-applicationform' element={<Forms setapplieddate={setapplieddate} applieddate={applieddate}/>}></Route>
             <Route path='/patientprofile/payment-method' element={<PaymentForm/>}></Route>
