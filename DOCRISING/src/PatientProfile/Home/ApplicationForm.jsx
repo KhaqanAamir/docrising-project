@@ -1,12 +1,17 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext,useRef } from "react";
 import NavBar2 from "../../Components/NavBar2";
 import { useNavigate } from "react-router-dom";
 import Calendar from "./Calendar";
 import Spinner from "react-bootstrap/Spinner"
+import GetAllDoctorsContext from "../../context/doctor/GetAllDoctorsContext";
 
-const ApplicationForm = ({ setapplieddate, applieddate, getproviders }) => {
+const ApplicationForm = ({setformid}) => {
+  const selectedDoctorRef = useRef('');
+  const selectedDoctorIdRef = useRef(''); 
   let history = useNavigate();
+  const b=useContext(GetAllDoctorsContext);
+  const {getdoctorsdata, getdoctors}=b;
   const [firstname, setfirstname] = useState("");
   const [lastname, setlastname] = useState("");
   const [email, setemail] = useState("");
@@ -21,21 +26,24 @@ const ApplicationForm = ({ setapplieddate, applieddate, getproviders }) => {
   const [pharmacy, setpharmacy] = useState("");
   const [currentdoctor, setcurrentdoctor] = useState("");
   const [selectedDoctor, setSelectedDoctor] = useState("");
-  const [selectedDoctorId,setselectedDoctorId]=useState('')
-  const [formId,setformId]=useState('')
+  const [applieddate,setapplieddate]=useState('')
 
   window.onload = function() {
     history('/patient/Home')
   };
 
   const handleDropdownChange = (event) => {
-    setSelectedDoctor(event.target.value);
-    // console.log(selectedDoctor)
-    const selecteditem=getproviders.filter(item=>item.name===selectedDoctor);
-    setselectedDoctorId(selecteditem[0]._id)
-    console.log(selecteditem[0].name)
-    console.log(selectedDoctorId)
-  };
+    const selectedValue = event.target.value;
+    selectedDoctorRef.current = selectedValue;
+    setSelectedDoctor(selectedDoctorRef.current)
+    const selectedProvider = getdoctors.find((item) => item.name === selectedValue);
+
+  if (selectedProvider) {
+    selectedDoctorIdRef.current = selectedProvider._id;
+    console.log(selectedDoctorRef.current);
+    console.log(selectedDoctorIdRef.current);
+  }
+   };
   
 
   const changefirstname = (event) => {
@@ -75,7 +83,9 @@ const ApplicationForm = ({ setapplieddate, applieddate, getproviders }) => {
     setcity(event.target.value);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getdoctorsdata();
+  }, []);
 
   const changegender = (event) => {
     setgender(event.target.value);
@@ -108,28 +118,32 @@ const ApplicationForm = ({ setapplieddate, applieddate, getproviders }) => {
         Weight: weight,
         Pharmacy: pharmacy,
         CurrentDoctor: currentdoctor,
-        SelectedProvider:selectedDoctor,
+        SelectedProvider:selectedDoctorRef.current,
         Gender: gender,
         Service: service,
-        doc_id:selectedDoctorId,
+        doc_id:selectedDoctorIdRef.current,
         Date: applieddate,
       }),
     });
     json = await response.json();
+    setformid(json.data._id)
     console.log(json.data)
-    setformId(json.data._id)
-    localStorage.setItem('formid',json.data._id)
-    console.log(localStorage.getItem('formid'))
-    localStorage.setItem('firstname',firstname)
+    console.log(json.data._id)
+    console.log(setformid)
+    history("/Patient/PaymentForm");
+    // setformid(json.data._id)
+    // localStorage.setItem('formid',json.data._id)
+    // console.log(localStorage.getItem('formid'))
+    // localStorage.setItem('firstname',firstname)
     // console.log(formId)
-    if (localStorage.getItem('formid')) {
-      history("/patientprofile/payment-method");
-    }
+    // if (localStorage.getItem('formid')) {
+    //   history("/patientprofile/payment-method");
+    // }
   };
 
   // console.log(getproviders[0]._id);
 
-  if (!localStorage.getItem("alldoctors")) {
+  if (!getdoctors) {
     return (
       <div  style={{position:'fixed',left:'45%', top:'30%'}}>
           <div>
@@ -276,22 +290,20 @@ else{
             />{" "}
 
             <br /><br /><br />
-            {/* <option value="option1">{getproviders[0].name}</option>
-                <option value="option2">{getproviders[1].name}</option> */}
-            {getproviders && <div>
+            {getdoctors && getdoctors.length>0 && <div>
               <h2>Please select a Provider:</h2>
-              <select value={selectedDoctor} onChange={handleDropdownChange}>
-                <option value="">Select...</option>
-                {getproviders.map((items,index)=>{
+              <select value={selectedDoctorRef.current} onChange={handleDropdownChange}>
+                <option value="none">Select...</option>
+                {getdoctors.map((items,index)=>{
                   return(
                     <>
-                    <option value={items.name} >{items.name}</option>
+                    <option value={items.name} key={index}>{items.name}</option>
                     </>
                   )
                 })}
                 
               </select>
-              {selectedDoctor && <p>You have selected: {selectedDoctor}</p>}
+              {selectedDoctor && <p>You have selected: {selectedDoctorRef.current}</p>}
             </div> }
             
             <br />

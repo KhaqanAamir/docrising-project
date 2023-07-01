@@ -6,7 +6,7 @@ import axios from 'axios'
 import NavBar2 from '../../Components/NavBar2'
 import SignUpAlert from './SignUpAlert'
 
-const PaymentForm = () => {
+const PaymentForm = ({formid}) => {
     
     // const[fullname,setfullname]=useState()
     // const[email,setemail]=useState()
@@ -38,7 +38,7 @@ const PaymentForm = () => {
     const showcalendar=(e)=>{
         e.preventDefault();
 
-        axios.post(`http://localhost:4000/user/paidpatient/${localStorage.getItem('formid')}`,{
+        axios.post(`http://localhost:4000/user/paidpatient/${formid}`,{
             headers:{
                 "Content-Type":"application/json"
             }

@@ -32,18 +32,18 @@ const Sidebar = () => {
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink exact to="/Dashboard" activeClassName="activeClicked">
+            <NavLink exact to="/Doctor/Dashboard" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="columns">Dashboard</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Appointments" activeClassName="activeClicked">
+            <NavLink exact to="/Doctor/Appointments" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="heartbeat">Appointments</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/AppointmentsReq" activeClassName="activeClicked">
+            <NavLink exact to="/Doctor/AppointmentsReq" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="bullhorn">Appointments Requests</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/profile" activeClassName="activeClicked">
+            <NavLink exact to="/Doctor/Profile" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
-            </NavLink><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+            </NavLink><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
             <CDBSidebarMenuItem icon="fa-solid fa-arrow-right"><button onClick={handleLogout} style={{fontSize:"x-large",fontFamily:"cursive",fontWeight:"bold"}} className="btn btn-outline-light" >Signout</button></CDBSidebarMenuItem>
             
 

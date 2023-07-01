@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Home from "../../Components/Home";
+import DocRisingIcon from '../../utils/Local Images/DocRisingIcon.jpeg'
 
 const DoctorSignUpForm = () => {
 
@@ -41,7 +42,7 @@ const DoctorSignUpForm = () => {
       <Home />
       <div className="App">
         <div ref={ref} className="appAside">
-          <center>{/* <img src={Logo} alt="klm"/> */}</center>
+          <center>{ <img src={DocRisingIcon} alt="klm"/> }</center>
         </div>
         <div className="appForm">
           {/* <div className="pageSwitcher"></div> */}
@@ -131,7 +132,7 @@ const DoctorSignUpForm = () => {
               Phone Number
             </label>
             <input
-              type="text"
+              type="number"
               id="phoneNo"
               className="formFieldInput"
               placeholder="Enter your Phone Number"

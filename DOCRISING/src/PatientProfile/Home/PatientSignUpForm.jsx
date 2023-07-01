@@ -6,6 +6,7 @@ import ActivePatientContext from "../../context/activepatient/ActivePatientConte
 import { Link } from "react-router-dom";
 // import SignUpAlert from "./SignUpAlert";
 import Home from "../../Components/Home";
+import DocRisingIcon from '../../utils/Local Images/DocRisingIcon.jpeg'
 
 const PatientSignUpForm = () => {
   // states I have used
@@ -115,7 +116,7 @@ const PatientSignUpForm = () => {
       <Home />
       <div className="App">
         <div ref={ref} className="appAside">
-          <center>{/* <img src={Logo} alt="klm"/> */}</center>
+          <center>{<img src={DocRisingIcon} alt="klm"/>}</center>
         </div>
         <div className="appForm">
           {/* <div className="pageSwitcher"></div> */}

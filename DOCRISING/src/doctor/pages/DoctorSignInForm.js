@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import DoctorSignUpForm from "./DoctorSignUpForm";
 import Home from "../../Components/Home";
+import ActiveDoctorContext from "../../context/activedoctor/ActiveDoctorContext";
+import DocRisingIcon from '../../utils/Local Images/DocRisingIcon.jpeg'
 
 const DoctorSignInForm = () => {
-  // const [loggedIn, setLoggedIn] = useState(true);
+  const b=useContext(ActiveDoctorContext);
+  const {activedoctor}=b;
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
@@ -43,7 +45,7 @@ const DoctorSignInForm = () => {
       <Home />
       <div className="App">
         <div ref={ref} className="appAside">
-          <center>{/* <img src={Logo} alt="klm"/> */}</center>
+          <center>{ <img src={DocRisingIcon} alt="klm"/> }</center>
         </div>
         <div className="appForm">
           <div>

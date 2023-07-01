@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import Sidebar from "../Components/Sidebar";
 import "../styles/Dashboard.css";
 import dashboardimg from "./daaash.jpg";
 import docss from "./doc1.png";
+// import axios from "axios";
 
 const Dashboard= ({ docdetails })=> {
+  // const [time, setTime] = useState('');
 
   
   const currentDate = new Date();
@@ -77,6 +79,7 @@ const Dashboard= ({ docdetails })=> {
         </div>
         <div className="content"></div>
       </div>
+  );
     </>
   );
 }

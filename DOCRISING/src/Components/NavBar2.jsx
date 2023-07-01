@@ -40,8 +40,9 @@ const NavBar2 = () => {
               </div>
               </div>
               </motion.li>
-                <motion.li whileHover={{scale:1.5, margin:'0px 40px'}}><Link className='linkss' to='/About'>About Us</Link></motion.li>
+                <motion.li whileHover={{scale:1.5, margin:'0px 40px'}}><Link className='linkss' to='/Patient/About'>About Us</Link></motion.li>
                 <motion.li whileHover={{scale:1.5, margin:'0px 40px'}}><Link className='linkss' to='/patient/SelfMedication'>Self Medication</Link></motion.li>
+                <motion.li whileHover={{scale:1.5, margin:'0px 40px'}}><Link className='linkss' to='/Patient/Calendar'>Calendar</Link></motion.li>
             </ul>
         </div>
         <div className="right-nav-div">

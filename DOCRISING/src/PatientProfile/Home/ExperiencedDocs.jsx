@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import '../../Styles/Pages/Home/ExperiencedDocs.css'
 import { Link } from 'react-router-dom'
-import axios from 'axios';
 import doctoravatar from '../../utils/Local Images/doctoravatar.jpg'
 import {
   MDBCard,
@@ -12,32 +11,7 @@ import {
   MDBBtn
 } from 'mdb-react-ui-kit';
 
-const ExperiencedDocs = () => {
-
-  const [getdoctors,setgetdoctors]=useState([]);
-
-  useEffect(()=>{
-
-    const fetchdoctors=async ()=>{
-    try{
-      const response=await axios.get('http://localhost:4000/doctors/getdoctors');
-      setgetdoctors(response.data);
-    }
-   catch(error){
-    console.error('Error fetching anxiety treatment data:', error)
-  }
-};
-
-    fetchdoctors()
-
-  },[])
-
-  console.log(getdoctors)
-  
-  localStorage.setItem('alldoctors',getdoctors)
-
-
-  
+const ExperiencedDocs = ({getdoctors}) => {
 
   return (
     <>

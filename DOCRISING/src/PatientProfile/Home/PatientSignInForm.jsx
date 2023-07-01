@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 // import IconImage from "../../utils/Local Images/DocRisingIcon.jpeg";
 import ActivePatientContext from "../../context/activepatient/ActivePatientContext";
 import Home from "../../Components/Home";
+import DocRisingIcon from '../../utils/Local Images/DocRisingIcon.jpeg'
 
 const PatientSignInForm = () => {
   const ref = useRef();
@@ -74,7 +75,7 @@ const PatientSignInForm = () => {
       <Home />
       <div className="App">
         <div ref={ref} className="appAside">
-          <center>{/* <img src={Logo} alt="klm"/> */}</center>
+          <center>{<img src={DocRisingIcon} alt="klm"/>}</center>
         </div>
         <div className="appForm">
           {/* <div className="pageSwitcher"></div> */}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useContext, useEffect} from 'react'
 import NavBar2 from '../../Components/NavBar2'
 import Welcome from './Welcome'
 import Services from './Services'
@@ -6,10 +6,17 @@ import Insurances from './Insurances'
 import ExperiencedDocs from './ExperiencedDocs'
 import Footer from '../../Components/Footer'
 import Spinner from "react-bootstrap/Spinner"
+import GetAllDoctorsContext from '../../context/doctor/GetAllDoctorsContext'
 
-const PatientHome = ({getproviders,setgetproviders}) => {
+const PatientHome = () => {
+
+  const b=useContext(GetAllDoctorsContext)
+  const {getdoctorsdata, getdoctors}=b;
 
 
+  useEffect(()=>{
+    getdoctorsdata()
+  },[])
   
   if (!localStorage.getItem("activepatientdetails")) {
     return (
@@ -33,7 +40,7 @@ else{
       <Welcome/>
      <Services/>
      <Insurances/>
-     {localStorage.getItem("alldoctors")&& <ExperiencedDocs />}
+     {getdoctors&& <ExperiencedDocs getdoctors={getdoctors} />}
      <Footer/>
      </>
   )
