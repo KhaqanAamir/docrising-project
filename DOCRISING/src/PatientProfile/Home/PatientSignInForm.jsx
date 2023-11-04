@@ -3,15 +3,19 @@
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 // import IconImage from "../../utils/Local Images/DocRisingIcon.jpeg";
+import axios from "axios";
 import ActivePatientContext from "../../context/activepatient/ActivePatientContext";
 import Home from "../../Components/Home";
 import DocRisingIcon from '../../utils/Local Images/DocRisingIcon.jpeg'
+
+const projectID = "f548ae4a-5b3c-4258-b3cc-6929a7f631e4";
 
 const PatientSignInForm = () => {
   const ref = useRef();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   // const [alert, setalert] = useState(null);
+  const [error, setError] = useState("");
   const a = useContext(ActivePatientContext);
   let json = "";
   let history = useNavigate();
@@ -46,6 +50,27 @@ const PatientSignInForm = () => {
       body: JSON.stringify({ Email: email, Password: password }),
     });
     json = await response.json();
+
+
+    // const authObject = {
+    //   "Project-ID": projectID,
+    //   "User-Name": 'Khaqan Aamir',
+    //   "User-Secret": 'khaqan',
+    // };
+
+    // try {
+    //   await axios.get("https://api.chatengine.io/chats", {
+    //     headers: authObject,
+    //   });
+
+    //   localStorage.setItem("username", 'Khaqan Aamir');
+    //   localStorage.setItem("password", 'khaqan');
+
+    //   // window.location.reload();
+    //   setError("");
+    // } catch (err) {
+    //   setError("Oops, incorrect credentials.");
+    // }
 
     if (json.success) {
       const patientdetails = await fetch("http://localhost:4000/user/getuser", {
@@ -130,6 +155,7 @@ const PatientSignInForm = () => {
                 Create an account
               </Link>
             </div>
+            {error}
           </div>
         </div>
       </div>

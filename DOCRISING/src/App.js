@@ -24,6 +24,8 @@ import GetAllDoctorsState from "./context/doctor/GetAllDoctorsState";
 import ActiveDoctorState from "./context/activedoctor/ActiveDoctorState";
 import About from './PatientProfile/Home/About'
 import Calendar2 from "./PatientProfile/Home/Calendar2";
+// import ChatMainComponent from "./Components/live-chat/ChatMainComponent";
+import Schedulers from "./PatientProfile/Home/Scheduler";
 
 import "./App.css";
 import Prescription from "./doctor/pages/Prescription";
@@ -45,6 +47,7 @@ function App() {
           <Route path="/Patient/SignIn" element={<PatientSignInForm/>} />
           <Route path="/Doctor/SignUp" element={<DoctorSignUpForm/>} />
           <Route path="/Patient/SignUp" element={<PatientSignUpForm/>} />
+          {/* <Route path="/Patient/Chat" element={<ChatMainComponent/>} /> */}
 
           {/* all patient routes */}
           <Route path="/Patient/Home" element={<GetAllDoctorsState><PatientHome/></GetAllDoctorsState>}/>
@@ -56,6 +59,7 @@ function App() {
           <Route path="7." element={<About/>}/>
           <Route path="/Patient/PaymentForm" element={<PaymentForm formid={formid}/>}/>
           <Route path="/Patient/Calendar" element={<Calendar2/>}/>
+          <Route path="/Patient/Scheduler" element={<Schedulers/>}/>
 
           {/* all doctor routes */}
           <Route path="/Doctor/Dashboard" element={<Dashboard docdetails={docdetails}/>} />

@@ -148,7 +148,7 @@ router.post('/applicants',fetchuser,[body('FirstName').isLength({min: 3}),body('
 router.post('/getuser',fetchuser, async (request, response)=>{
 try{
      const userId=request.user.id;
-    const user=await SignUpTemplate.findById(userId).select('-Password')
+    const user=await SignUpTemplate.findById(userId)
     response.send(user)
 }
 catch(error){

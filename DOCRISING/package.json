@@ -4,15 +4,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^5.1.4",
+    "@babel/runtime-corejs2": "7.13.10",
+    "@devexpress/dx-react-core": "^4.0.5",
+    "@devexpress/dx-react-scheduler": "^4.0.5",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.13.2",
     "@mui/x-date-pickers": "^6.5.0",
     "@popperjs/core": "^2.11.6",
+    "@syncfusion/ej2-buttons": "18.4.46",
+    "@syncfusion/ej2-calendars": "^22.2.5",
+    "@syncfusion/ej2-react-base": "^22.2.5",
+    "@syncfusion/ej2-react-calendars": "18.4.48",
+    "@syncfusion/ej2-react-schedule": "^18.4.49",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.2.1",
+    "axios": "^1.4.0",
+    "bootstrap": "^5.3.1",
     "cdbreact": "^1.5.17",
     "cheerio": "^1.0.0-rc.12",
     "cookie-parser": "^1.4.6",
@@ -24,13 +34,12 @@
     "mdb-react-ui-kit": "^5.1.0",
     "mdbootstrap": "^4.20.0",
     "mdbreact": "^5.2.0",
-    "mongodb": "^4.13.0",
-    "openai": "^3.2.1",
+    "moment": "^2.29.4",
     "popper.js": "^1.16.1",
     "primereact": "^9.5.0",
     "react": "^18.2.0",
     "react-avatar-edit": "^1.2.0",
-    "react-bootstrap": "^2.7.0",
+    "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
@@ -62,5 +71,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
   }
 }
